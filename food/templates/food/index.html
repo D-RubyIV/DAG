@@ -1,0 +1,40 @@
+{% extends 'food/base.html' %}
+{% block body %}
+    <div>
+    <a href="{% url 'food:add' %}">Thêm mới</a>
+    </div>
+    <table border>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in item_list %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>
+                    <div>
+                        <img class="card" alt="" width="100"  src="{{ item.item_image }}">
+                    </div>
+                </td>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.item_description }}</td>
+                <td>{{ item.item_price }}</td>
+                <td>
+                    <div>
+                        <a href="{% url 'food:detail' item.id %}">Chi tiết</a>
+                        <a href="{% url 'food:update' item.id %}">Cập nhật</a>
+                        <a href="{% url 'food:delete' item.id %}">Xóa</a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

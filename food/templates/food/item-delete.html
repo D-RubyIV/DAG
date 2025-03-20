@@ -1,0 +1,5 @@
+<form method="POST">
+    {% csrf_token %}
+    <h1>Có muốn xóa {{ item.item_name }} ? </h1>
+    <button type="submit">Xác nhận</button>
+</form>
