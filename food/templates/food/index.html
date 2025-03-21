@@ -11,6 +11,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
+            <th>Author</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -26,6 +27,7 @@
                 <td>{{ item.item_name }}</td>
                 <td>{{ item.item_description }}</td>
                 <td>{{ item.item_price }}</td>
+                <td>{{ item.user_name }}</td>
                 <td>
                     <div>
                         <a href="{% url 'food:detail' item.id %}">Chi tiết</a>

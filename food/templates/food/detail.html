@@ -1,9 +1,9 @@
 {% extends 'food/base.html' %}
 {% block body %}
     <div>
-        <img src="{{ item.item_image }}" alt="" width="100px">
-        {{ item.item_name }}
-        {{ item.item_description }}
-        {{ item.item_price }}
+        <img src="{{ object.item_image }}" alt="" width="100px">
+        {{ object.item_name }}
+        {{ object.item_description }}
+        {{ object.item_price }}
     </div>
 {% endblock %}

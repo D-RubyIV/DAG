@@ -3,6 +3,7 @@ from typing import List
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
+from django.views.generic import ListView, DetailView, CreateView
 
 from .forms import ItemForm
 from .models import Item
@@ -21,6 +22,23 @@ def index(request):
         context=context
     )
 
+class FoodDetailView(DetailView):
+    model = Item
+    template_name = "food/detail.html"
+
+class IndexClassView(ListView):
+    model = Item
+    template_name = "food/index.html"
+    context_object_name = "item_list"
+
+class CreateItem(CreateView):
+    model = Item
+    fields = ['item_name', "item_description", "item_price", "item_image"]
+    template_name = "food/item-form.html"
+
+    def form_valid(self, form):
+        form.instance.user_name = self.request.user
+        return super().form_valid(form)
 
 def item(request):
     return HttpResponse("<h1>This is an item view</h1>")

@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 # Create your models here.
@@ -13,3 +15,7 @@ class Item(models.Model):
         max_length=500,
         default="https://static.vecteezy.com/system/resources/previews/016/916/479/original/placeholder-icon-design-free-vector.jpg"
     )
+    user_name = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+
+    def get_absolute_url(self):
+        return reverse("food:detail", kwargs={"pk": self.pk})
